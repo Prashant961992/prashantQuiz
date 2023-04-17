@@ -69,4 +69,23 @@ class QuizViewModel: BaseViewModel {
         }
         return sum
     }
+    
+    func getResultMessage(questions: [Question]) -> String {
+        let filteredOptions = questions.filter { $0.isCorrect == true }
+        if filteredOptions.count == 5 {
+            return "​You Won!"
+        } else if filteredOptions.count == 7 {
+            return "​You Won! Congratulations."
+        } else if filteredOptions.count == 9 {
+            return "​You Won! Congratulations."
+        } else if filteredOptions.count == 10 {
+            return "​Awesome. You are Genius. Congratulations you won the Game."
+        } else if filteredOptions.count == 0 || filteredOptions.count == 1 ||  filteredOptions.count == 2 {
+            return "Sorry, You failed."
+        } else if filteredOptions.count == 3 || filteredOptions.count == 4 {
+            return "Well played but you failed. All The Best for Next Game."
+        } else {
+            return ""
+        }
+    }
 }

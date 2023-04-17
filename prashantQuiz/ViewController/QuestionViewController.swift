@@ -57,11 +57,12 @@ class QuestionViewController: BaseViewController {
     
     func redirectScreen() {
         timer.invalidate()
+        let updatesQuestions = viewModel.getUpdatedScoreArray(selectedQuestion: viewModel.selectedQuestion, currentIndex: currentQuestion, questions: questions)
         if (currentQuestion + 1) == 10 {
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "ThankYouViewController") as! ThankYouViewController
+            vc.questions = updatesQuestions
             self.navigationController?.pushViewController(vc, animated: true)
         } else {
-            let updatesQuestions = viewModel.getUpdatedScoreArray(selectedQuestion: viewModel.selectedQuestion, currentIndex: currentQuestion, questions: questions)
             let vc = self.storyboard?.instantiateViewController(withIdentifier: "QuestionViewController") as! QuestionViewController
             vc.questions = updatesQuestions
             vc.currentQuestion = currentQuestion + 1
@@ -106,7 +107,12 @@ class QuestionViewController: BaseViewController {
     
     @IBAction func actionNextClick(_ sender: Any) {
         if viewModel.selectedQuestion == nil {
-            self.viewModel.errorMsg.accept("Please select option")
+            let alertController = UIAlertController(title: "Error", message: "Please select option", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default) { action in
+                
+            }
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
         } else {
             self.redirectScreen()
         }

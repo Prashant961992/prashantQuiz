@@ -131,7 +131,7 @@
                                 <rect key="frame" x="0.0" y="816" width="414" height="80"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ga0-Kn-fLI">
-                                        <rect key="frame" x="264" y="10" width="130" height="50"/>
+                                        <rect key="frame" x="264" y="15" width="130" height="50"/>
                                         <color key="backgroundColor" name="navBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="130" id="6tv-Ye-bNx"/>
@@ -142,7 +142,6 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Next"/>
                                         <connections>
                                             <action selector="actionNextClick:" destination="CF9-zM-uOg" eventType="touchUpInside" id="Man-fB-dYK"/>
-                                            <action selector="actionPlayGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ki6-HB-Oji"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jil-e8-N0y">
@@ -154,7 +153,7 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Ga0-Kn-fLI" secondAttribute="bottom" constant="20" id="Qi6-bO-N64"/>
+                                    <constraint firstItem="Ga0-Kn-fLI" firstAttribute="centerY" secondItem="jxB-yr-7MM" secondAttribute="centerY" id="T0K-SA-6RH"/>
                                     <constraint firstAttribute="height" constant="80" id="Tjv-vU-EFV"/>
                                     <constraint firstAttribute="trailing" secondItem="Ga0-Kn-fLI" secondAttribute="trailing" constant="20" id="bz0-SS-3E0"/>
                                     <constraint firstItem="jil-e8-N0y" firstAttribute="centerY" secondItem="jxB-yr-7MM" secondAttribute="centerY" id="ciz-DM-KMS"/>
@@ -214,14 +213,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYr-9E-rRE">
-                                <rect key="frame" x="186" y="387" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYr-9E-rRE">
+                                <rect key="frame" x="8" y="441.5" width="398" height="23"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZm-No-6e4">
-                                <rect key="frame" x="132" y="428" width="150" height="50"/>
+                                <rect key="frame" x="132" y="484.5" width="150" height="50"/>
                                 <color key="backgroundColor" name="navBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="k9w-54-lmz"/>
@@ -232,21 +231,33 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Play Again"/>
                                 <connections>
                                     <action selector="actionPlayAgain:" destination="LHJ-5h-7tC" eventType="touchUpInside" id="fL3-6F-lU5"/>
-                                    <action selector="actionPlayGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="nZh-Jh-DM3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Flu-0q-3Qt">
+                                <rect key="frame" x="8" y="396" width="398" height="25.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="7vy-qB-ugf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="JYr-9E-rRE" firstAttribute="centerX" secondItem="fZm-No-6e4" secondAttribute="centerX" id="6dX-fp-cBC"/>
+                            <constraint firstItem="JYr-9E-rRE" firstAttribute="centerY" secondItem="7vy-qB-ugf" secondAttribute="centerY" id="7WJ-yf-nSV"/>
                             <constraint firstItem="fZm-No-6e4" firstAttribute="centerX" secondItem="7vy-qB-ugf" secondAttribute="centerX" id="7nI-Nw-PSC"/>
-                            <constraint firstItem="fZm-No-6e4" firstAttribute="top" secondItem="JYr-9E-rRE" secondAttribute="bottom" constant="20" id="85t-L3-8eU"/>
-                            <constraint firstItem="JYr-9E-rRE" firstAttribute="centerX" secondItem="7vy-qB-ugf" secondAttribute="centerX" id="IT0-jl-g1k"/>
-                            <constraint firstItem="fZm-No-6e4" firstAttribute="centerY" secondItem="7vy-qB-ugf" secondAttribute="centerY" id="VJq-Yj-2pH"/>
+                            <constraint firstItem="Flu-0q-3Qt" firstAttribute="leading" secondItem="7vy-qB-ugf" secondAttribute="leading" constant="8" id="90V-KY-dt0"/>
+                            <constraint firstItem="JYr-9E-rRE" firstAttribute="leading" secondItem="7vy-qB-ugf" secondAttribute="leading" constant="8" id="NTv-rP-vps"/>
+                            <constraint firstItem="fZm-No-6e4" firstAttribute="top" secondItem="JYr-9E-rRE" secondAttribute="bottom" constant="20" id="PCy-NR-pBY"/>
+                            <constraint firstItem="Flu-0q-3Qt" firstAttribute="centerX" secondItem="7vy-qB-ugf" secondAttribute="centerX" id="eIN-sr-V7b"/>
+                            <constraint firstItem="JYr-9E-rRE" firstAttribute="top" secondItem="Flu-0q-3Qt" secondAttribute="bottom" constant="20" id="fzW-f4-6v1"/>
+                            <constraint firstItem="7vy-qB-ugf" firstAttribute="trailing" secondItem="JYr-9E-rRE" secondAttribute="trailing" constant="8" id="n6q-EE-aF1"/>
+                            <constraint firstItem="7vy-qB-ugf" firstAttribute="trailing" secondItem="Flu-0q-3Qt" secondAttribute="trailing" constant="8" id="t8P-ha-249"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="lblMessage" destination="JYr-9E-rRE" id="tQa-Hh-ELa"/>
+                        <outlet property="lblScore" destination="Flu-0q-3Qt" id="gTW-Sy-cZN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bYM-Vp-W0K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
