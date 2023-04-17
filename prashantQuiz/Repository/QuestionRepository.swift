@@ -57,6 +57,7 @@ class QuestionRepository: NSObject {
                 let question = QuestionOption(optionId: Int(optionId), optionText: optionText, isCorrect: Int(isCorrect))
                 arrayOfOptions.append(question)
             }
+            arrayOfOptions.shuffle()
             result(arrayOfOptions, nil)
         } catch {
             result(arrayOfOptions, "Error inserting initial data: \(error)" as? Error)
