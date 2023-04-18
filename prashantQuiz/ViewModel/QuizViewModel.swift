@@ -107,12 +107,12 @@ class QuizViewModel: BaseViewModel {
     */
     func getResultMessage(questions: [Question]) -> String {
         let filteredOptions = questions.filter { $0.isCorrect == true }
-        if filteredOptions.count == 5 {
+        if filteredOptions.count == 5 || filteredOptions.count == 6 {
             return "​You Won!"
-        } else if filteredOptions.count == 7 {
+        } else if filteredOptions.count == 7 || filteredOptions.count == 8 {
             return "​You Won! Congratulations."
         } else if filteredOptions.count == 9 {
-            return "​You Won! Congratulations."
+            return "​​You Won! Congratulations and Well Done."
         } else if filteredOptions.count == 10 {
             return "​Awesome. You are Genius. Congratulations you won the Game."
         } else if filteredOptions.count == 0 || filteredOptions.count == 1 ||  filteredOptions.count == 2 {
