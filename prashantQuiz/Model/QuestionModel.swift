@@ -10,8 +10,12 @@ import Foundation
 import RxSwift
 import RxCocoa
 
+// This is a Swift class named QuestionModel that inherits from a base class named BaseViewModel.
 class QuestionModel : BaseViewModel {
+    //    Initialized with an empty array of Question objects, while
     var questionsData : BehaviorRelay<[Question]> = BehaviorRelay(value: [Question]())
+    
+    //    Initialized with an empty array of QuestionOption objects.
     var optionsData : BehaviorRelay<[QuestionOption]> = BehaviorRelay(value: [QuestionOption]())
 }
 
