@@ -34,7 +34,11 @@ class QuestionViewController: BaseViewController {
         super.viewWillAppear(animated)
         self.tblViewQuestions.layer.cornerRadius = 10.0
         self.tblViewQuestions.clipsToBounds = true
-        
+        self.tblViewQuestions.layer.shadowColor = UIColor.black.cgColor
+        self.tblViewQuestions.layer.shadowOffset = CGSize(width: 0, height: 2)
+        self.tblViewQuestions.layer.shadowOpacity = 0.8
+        self.tblViewQuestions.layer.shadowRadius = 5
+        self.tblViewQuestions.layer.masksToBounds = false
         lblSequence.text = "\(currentQuestion + 1)"
         self.startTimer()
     }

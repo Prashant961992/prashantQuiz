@@ -253,7 +253,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="UWQ-vh-xL1"/>
-                        <color key="backgroundColor" name="deepSeaBlue"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hUJ-UJ-d69" firstAttribute="top" secondItem="UWQ-vh-xL1" secondAttribute="top" id="19B-UL-P6g"/>
                             <constraint firstItem="Zxk-6f-gyc" firstAttribute="top" secondItem="hUJ-UJ-d69" secondAttribute="bottom" constant="16" id="EvU-dc-Gs7"/>
@@ -358,9 +358,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="deepSeaBlue">
-            <color red="0.0" green="0.32549019607843138" blue="0.5725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <namedColor name="navBackgroundColor">
             <color red="1" green="0.80784313725490198" blue="0.035294117647058823" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
