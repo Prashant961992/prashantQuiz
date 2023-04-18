@@ -7,6 +7,9 @@
 
 import UIKit
 
+/**
+ A custom `UITableViewCell` subclass that represents a single question in a quiz app.
+ */
 class QuestionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblQuestions: UILabel!

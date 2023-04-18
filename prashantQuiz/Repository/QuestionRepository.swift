@@ -8,8 +8,17 @@
 import UIKit
 import FMDB
 
+/**
+ The QuestionRepository class provides methods to retrieve questions and their choices from a SQLite database.
+ */
 class QuestionRepository: NSObject {
     
+    /**
+     Retrieves 10 random questions from the database and returns them as an array of Question objects. This method takes a closure as a parameter which is called asynchronously when the data is retrieved.
+     
+     - Parameters:
+         - result: A closure that is called once the operation is completed. It takes an optional array of `Question` objects and an optional `Error` object as parameters.
+     */
     func getQuestions(result : @escaping (_ value: [Question]?, _ error: Error?) -> Void)  {
         let database = FMDatabase(url: AppManager.instance.getDirectoryPath())
         var arrayOfQuestions = [Question]()
@@ -37,6 +46,15 @@ class QuestionRepository: NSObject {
         database.close()
     }
     
+    /**
+     The getQuestionChoices function retrieves 3 random options associated with a specific question, shuffles the array of options and then creates an array of QuestionOption objects.
+     
+     - Parameters:
+        - questionid: The ID of the question for which options need to be retrieved.
+        - result: A completion handler which is called when the options are retrieved successfully or when an error occurs.
+        - value: An array of QuestionOption objects representing the retrieved options. Can be nil if an error occurs.
+        - error: An Error object containing details about the error that occurred, if any. Can be nil if the options are retrieved successfully.
+     */
     func getQuestionChoices(questionid: Int, result : @escaping (_ value: [QuestionOption]?, _ error: Error?) -> Void) {
         let database = FMDatabase(url: AppManager.instance.getDirectoryPath())
         var arrayOfOptions = [QuestionOption]()

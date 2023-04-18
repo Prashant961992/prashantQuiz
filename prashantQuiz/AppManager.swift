@@ -11,6 +11,13 @@ import FMDB
 class AppManager {
     static let instance = AppManager()
     
+    /**
+     Returns the file URL for the app's SQLite database file.
+     
+     This method retrieves the URL for the app's SQLite database file located in the app's documents directory. The method first gets the URL for the documents directory using the `FileManager` class, and then appends the name of the SQLite database file to the end of the URL. The resulting file URL can be used to open a connection to the app's SQLite database.
+     
+     - Returns: The file URL for the app's SQLite database file.
+     */
     func getDirectoryPath() -> URL {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         print(documentsDirectory)
@@ -18,6 +25,11 @@ class AppManager {
         return databaseURL
     }
     
+    /**
+     Sets up the initial data for the app's SQLite database.
+     
+     This method creates the necessary database table(s) and inserts initial data into the app's SQLite database using the `FMDatabase` class. The method retrieves the file URL for the database file using the `getDirectoryPath()` method, and then opens a connection to the database. If the connection is successful, the method calls the `createTable(database:)` method to create the necessary table(s), and then calls the `insertInitialData(database:)` method to insert initial data into the table(s). If an error occurs during data insertion, the error is printed to the console. Finally, the method closes the database connection.
+     */
     func setupInitialData() {
         let database = FMDatabase(url: getDirectoryPath())
         
@@ -36,6 +48,11 @@ class AppManager {
         database.close()
     }
     
+    /**
+     Creates the necessary database table(s) for the app's SQLite database.
+
+     - Parameter database: A `FMDatabase` instance representing the app's SQLite database.
+     */
     func createTable(database: FMDatabase) {
         let createQuestionsTable = "CREATE TABLE IF NOT EXISTS Questions (question_id INTEGER PRIMARY KEY,question_text TEXT)"
         database.executeStatements(createQuestionsTable)
@@ -44,11 +61,25 @@ class AppManager {
         database.executeStatements(createOptionsTable)
     }
     
+    /**
+     Inserts initial data into the app's SQLite database.
+     
+     This method inserts initial data into the `Questions` and `Options` tables in the app's SQLite database using the `insertQuestionData(database:)` and `insertOptionData(database:)` methods.
+     
+     - Parameter database: A `FMDatabase` instance representing the app's SQLite database.
+     - Throws: An error if an error occurs during data insertion.
+     */
     func insertInitialData(database: FMDatabase) throws {
         try insertQuestionData(database: database)
         try insertOptionData(database: database)
     }
     
+    /**
+     Inserts initial question data into the app's SQLite database.
+     
+     - Parameter database: A `FMDatabase` instance representing the app's SQLite database.
+     - Throws: An error if an error occurs during data insertion.
+     */
     func insertQuestionData(database: FMDatabase) throws {
         let insertQuery = "INSERT INTO Questions (question_id, question_text) VALUES (?, ?)"
         let values = [
@@ -75,6 +106,12 @@ class AppManager {
         }
     }
     
+    /**
+     Inserts initial option data into the app's SQLite database.
+     
+     - Parameter database: A `FMDatabase` instance representing the app's SQLite database.
+     - Throws: An error if an error occurs during data insertion.
+     */
     func insertOptionData(database: FMDatabase) throws {
         let insertQuery = "INSERT INTO Options (option_id, question_id, option_text, is_correct) VALUES (?, ?, ?, ?)"
         let values = [

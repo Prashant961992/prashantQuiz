@@ -9,29 +9,44 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-
+/**
+ The QuestionViewController class is responsible for handling the question screen of the application. It inherits from BaseViewController, which provides some basic functionality such as showing a loading spinner and displaying error messages.
+ */
 class QuestionViewController: BaseViewController {
+    
     var questions = [Question]()
     var currentQuestion : Int = 1
     var timer = Timer()
+    let viewModel = QuizViewModel()
+    let disposeBag = DisposeBag()
     
     @IBOutlet weak var lblTimer: UILabel!
     @IBOutlet weak var lblSequence: UILabel!
     @IBOutlet weak var lblScore: UILabel!
-    let viewModel = QuizViewModel()
-    let disposeBag = DisposeBag()
     @IBOutlet weak var tblViewQuestions: UITableView!
     
+    // Lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set estimated row height for the table view
         tblViewQuestions.estimatedRowHeight = 44
+        
+        // Calculate and display the total score
         lblScore.text = "\(viewModel.calculateTotalScore(questions: questions))"
+        
+        // Create and bind callbacks for the ViewModel
         self.createCallbacks()
+        
+        // Get the options data for the current question from the ViewModel
         self.viewModel.getQuestionChoicesData(questionId: questions[currentQuestion].questionId)
     }
     
+    // Lifecycle methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Set corner radius and shadow properties for the table view
         self.tblViewQuestions.layer.cornerRadius = 10.0
         self.tblViewQuestions.clipsToBounds = true
         self.tblViewQuestions.layer.shadowColor = UIColor.black.cgColor
@@ -39,14 +54,20 @@ class QuestionViewController: BaseViewController {
         self.tblViewQuestions.layer.shadowOpacity = 0.8
         self.tblViewQuestions.layer.shadowRadius = 5
         self.tblViewQuestions.layer.masksToBounds = false
+        
+        // Update the question number label
         lblSequence.text = "\(currentQuestion + 1)"
+        
+        // Start the timer
         self.startTimer()
     }
     
+    // Start the timer
     func startTimer() {
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
+    // Update the timer
     @objc func updateTimer() {
         if viewModel.timeLeft > 0 {
             viewModel.timeLeft -= 1
@@ -61,6 +82,7 @@ class QuestionViewController: BaseViewController {
         }
     }
     
+    // Redirect to the next screen
     func redirectScreen() {
         timer.invalidate()
         let updatesQuestions = viewModel.getUpdatedScoreArray(selectedQuestion: viewModel.selectedQuestion, currentIndex: currentQuestion, questions: questions)
@@ -76,6 +98,7 @@ class QuestionViewController: BaseViewController {
         }
     }
     
+    //    The createCallbacks method sets up the callbacks for the viewModel's observables using the bind method from RxSwift.
     func createCallbacks() {
         viewModel.isSuccess.asObservable()
             .bind{ value in
@@ -111,6 +134,14 @@ class QuestionViewController: BaseViewController {
             }.disposed(by: disposeBag)
     }
     
+    /**
+    This function applies a circular radius and border to the background view of a QuestionTableViewCell.
+
+    - Parameters:
+     - cell: The QuestionTableViewCell object whose background view needs to be styled.
+     - backgroundColor: The color to be applied to the background view of the cell.
+     - borderColor: The color to be applied to the border of the background view of the cell.
+    */
     func optionViewRadiusAndWidthSelection(cell: QuestionTableViewCell, backgroundColor: UIColor, borderColor: UIColor) {
         cell.viewCellBackground.backgroundColor = backgroundColor
         cell.viewCellBackground.layer.cornerRadius = 10.0
@@ -120,6 +151,7 @@ class QuestionViewController: BaseViewController {
     }
 }
 
+// MARK: - UI TableView DataSource
 extension QuestionViewController : UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
@@ -168,6 +200,7 @@ extension QuestionViewController : UITableViewDataSource {
     }
 }
 
+// MARK: - UI TableView Delegate
 extension QuestionViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {

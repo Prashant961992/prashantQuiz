@@ -13,6 +13,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        /**
+         Sets up the initial data for the app using the `AppManager` singleton instance.
+         
+         This method should be called at the start of the app to ensure that any necessary data is loaded and available for use. It is recommended to call this method in the `application(_:didFinishLaunchingWithOptions:)` method of your app delegate.
+         */
         AppManager.instance.setupInitialData()
         return true
     }

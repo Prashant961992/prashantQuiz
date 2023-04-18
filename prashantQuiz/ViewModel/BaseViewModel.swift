@@ -9,6 +9,9 @@ import UIKit
 import RxSwift
 import RxCocoa
 
+/**
+ This is a class called BaseViewModel which is a subclass of NSObject. It likely serves as a base class for other view model classes and provides common functionality and properties that are needed in view model classes.
+ */
 class BaseViewModel: NSObject {
     let disposebag = DisposeBag()
     // Fields that bind to our view's

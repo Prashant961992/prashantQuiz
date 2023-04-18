@@ -15,6 +15,9 @@ class QuestionModel : BaseViewModel {
     var optionsData : BehaviorRelay<[QuestionOption]> = BehaviorRelay(value: [QuestionOption]())
 }
 
+/**
+ A model class that represents a question in a quiz app.
+ */
 class Question: Codable {
     var questionId: Int
     var questionText: String
@@ -31,6 +34,9 @@ class Question: Codable {
     }
 }
 
+/**
+ A model class that represents a option for a question in a quiz app.
+ */
 class QuestionOption: Codable {
     var optionId: Int
     var optionText: String

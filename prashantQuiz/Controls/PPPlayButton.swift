@@ -7,6 +7,9 @@
 
 import UIKit
 
+/**
+ A custom `UIButton` subclass that represents a play button for media content.
+ */
 class PPPlayButton: UIButton {
     
     override func awakeFromNib() {
