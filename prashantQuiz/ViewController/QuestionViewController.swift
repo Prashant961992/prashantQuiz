@@ -71,7 +71,7 @@ class QuestionViewController: BaseViewController {
     @objc func updateTimer() {
         if viewModel.timeLeft > 0 {
             viewModel.timeLeft -= 1
-            print("Time left: \(viewModel.timeLeft)")
+//            print("Time left: \(viewModel.timeLeft)")
             lblTimer.text = "\(viewModel.timeLeft)"
             if viewModel.timeLeft == 0 {
                 self.redirectScreen()
