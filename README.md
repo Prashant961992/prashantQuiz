@@ -10,7 +10,6 @@ I have stored four options in the database but displayed only three options (1 C
 
 To enhance the user experience, I have changed the button color to green and red for correct and wrong answers, respectively. Moreover, I have shown the timer, question number, and score at the top of the screen.
 
-Finally, upon completion of the game, I have displayed the total score and a win or lose message. Please note that since no message was mentioned in the documentation for 6 and 8 correct answers, I have set those messages as blank.
+Finally, upon completion of the game, I have displayed the total score and a win or lose message. Please note that since no message was mentioned in the documentation for 6 and 8 correct answers, I have set the message to show "You Won!" for 6 correct answers and "Congratulations. You Won!" for 8 correct answers.
 
 In conclusion, I am delighted to have completed the practical task successfully and hope that it meets your expectations. Thank you for providing me with this opportunity.
-
