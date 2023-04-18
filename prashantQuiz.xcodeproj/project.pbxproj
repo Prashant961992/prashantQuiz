@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		832D651A15075F817FE5F716 /* Pods_prashantQuizTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C3594B4AC734DB5E3B2B73C /* Pods_prashantQuizTests.framework */; };
 		9E5DA85425E3F1FDB7CEE0B1 /* Pods_prashantQuiz_prashantQuizUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D5CA4CEE03357FA48468125 /* Pods_prashantQuiz_prashantQuizUITests.framework */; };
+		A85C0C6F29EEE8FC008F209E /* PPPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = A85C0C6E29EEE8FC008F209E /* PPPlayButton.swift */; };
 		A885F57F29ED946200C51171 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A885F57E29ED946200C51171 /* AppDelegate.swift */; };
 		A885F58129ED946200C51171 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A885F58029ED946200C51171 /* SceneDelegate.swift */; };
 		A885F58629ED946200C51171 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A885F58429ED946200C51171 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		84AA415F05EC93501766D4E5 /* Pods_prashantQuiz.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_prashantQuiz.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94944AF639385E3680FA04EF /* Pods-prashantQuizTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prashantQuizTests.release.xcconfig"; path = "Target Support Files/Pods-prashantQuizTests/Pods-prashantQuizTests.release.xcconfig"; sourceTree = "<group>"; };
 		99527B52158AE66D55048960 /* Pods-prashantQuiz.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-prashantQuiz.release.xcconfig"; path = "Target Support Files/Pods-prashantQuiz/Pods-prashantQuiz.release.xcconfig"; sourceTree = "<group>"; };
+		A85C0C6E29EEE8FC008F209E /* PPPlayButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PPPlayButton.swift; sourceTree = "<group>"; };
 		A885F57B29ED946200C51171 /* prashantQuiz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = prashantQuiz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A885F57E29ED946200C51171 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A885F58029ED946200C51171 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -126,6 +128,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		A85C0C6D29EEE8DF008F209E /* Controls */ = {
+			isa = PBXGroup;
+			children = (
+				A85C0C6E29EEE8FC008F209E /* PPPlayButton.swift */,
+			);
+			path = Controls;
+			sourceTree = "<group>";
+		};
 		A885F57229ED946200C51171 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +166,7 @@
 				A885F57E29ED946200C51171 /* AppDelegate.swift */,
 				A885F58029ED946200C51171 /* SceneDelegate.swift */,
 				A885F5CD29ED9B6C00C51171 /* AppManager.swift */,
+				A85C0C6D29EEE8DF008F209E /* Controls */,
 				A885F5D429EDB12400C51171 /* Cell */,
 				A885F5CF29EDAAFF00C51171 /* Model */,
 				A885F5C429ED96BE00C51171 /* Repository */,
@@ -491,6 +502,7 @@
 				A885F5CC29ED987600C51171 /* QuestionViewController.swift in Sources */,
 				A885F5D629EDB14000C51171 /* QuestionTableViewCell.swift in Sources */,
 				A885F5C829ED975400C51171 /* HomeViewController.swift in Sources */,
+				A85C0C6F29EEE8FC008F209E /* PPPlayButton.swift in Sources */,
 				A885F5D129EDAB2700C51171 /* QuestionModel.swift in Sources */,
 				A885F5D829EDB99C00C51171 /* ThankYouViewController.swift in Sources */,
 			);

@@ -21,7 +21,6 @@ class QuestionViewController: BaseViewController {
     let viewModel = QuizViewModel()
     let disposeBag = DisposeBag()
     @IBOutlet weak var tblViewQuestions: UITableView!
-   
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +32,9 @@ class QuestionViewController: BaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.tblViewQuestions.layer.cornerRadius = 10.0
+        self.tblViewQuestions.clipsToBounds = true
+        
         lblSequence.text = "\(currentQuestion + 1)"
         self.startTimer()
     }
@@ -105,19 +107,13 @@ class QuestionViewController: BaseViewController {
             }.disposed(by: disposeBag)
     }
     
-    @IBAction func actionNextClick(_ sender: Any) {
-        if viewModel.selectedQuestion == nil {
-            let alertController = UIAlertController(title: "Error", message: "Please select option", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default) { action in
-                
-            }
-            alertController.addAction(okAction)
-            present(alertController, animated: true, completion: nil)
-        } else {
-            self.redirectScreen()
-        }
+    func optionViewRadiusAndWidthSelection(cell: QuestionTableViewCell, backgroundColor: UIColor, borderColor: UIColor) {
+        cell.viewCellBackground.backgroundColor = backgroundColor
+        cell.viewCellBackground.layer.cornerRadius = 10.0
+        cell.viewCellBackground.layer.borderColor = borderColor.cgColor
+        cell.viewCellBackground.layer.borderWidth = 1.0
+        cell.viewCellBackground.clipsToBounds = true
     }
-    
 }
 
 extension QuestionViewController : UITableViewDataSource {
@@ -143,10 +139,20 @@ extension QuestionViewController : UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionTableViewCellSelection", for: indexPath) as! QuestionTableViewCell
             
             if viewModel.questionsOptions[indexPath.row].optionId == viewModel.selectedQuestion?.optionId {
-                cell.imgSelection.image = UIImage(named: "fillRadio")
+                cell.imgSelection.isHidden = false
+                if viewModel.questionsOptions[indexPath.row].isCorrect == 1 {
+                    cell.imgSelection.image = UIImage(named: "right")
+                    optionViewRadiusAndWidthSelection(cell: cell, backgroundColor: UIColor(named: "green")!.withAlphaComponent(0.5), borderColor: UIColor(named: "green")!)
+                } else {
+                    cell.imgSelection.image = UIImage(named: "wrong")
+                    optionViewRadiusAndWidthSelection(cell: cell, backgroundColor: UIColor(named: "red")!.withAlphaComponent(0.5), borderColor: UIColor(named: "red")!)
+                }
             } else {
-                cell.imgSelection.image = UIImage(named: "emptyRadio")
+                cell.imgSelection.isHidden = true
+                optionViewRadiusAndWidthSelection(cell: cell, backgroundColor: UIColor.white, borderColor: UIColor.black)
             }
+            
+            
             
             let selectedView = UIView()
             selectedView.backgroundColor = .clear
@@ -164,6 +170,9 @@ extension QuestionViewController : UITableViewDelegate {
             viewModel.lastAnswerSelectedSecond = (20 - viewModel.timeLeft)
             viewModel.selectedQuestion = viewModel.questionsOptions[indexPath.row]
             tableView.reloadData()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                self.redirectScreen()
+            }
         }
     }
     
@@ -171,7 +180,7 @@ extension QuestionViewController : UITableViewDelegate {
         if indexPath.section == 0 {
             return UITableView.automaticDimension
         } else {
-            return 40
+            return 80
         }
     }
 }

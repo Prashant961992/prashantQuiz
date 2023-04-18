@@ -17,5 +17,5 @@ class BaseViewModel: NSObject {
     let errorMsg : BehaviorRelay<String> = BehaviorRelay(value: "")
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-
+    
 }

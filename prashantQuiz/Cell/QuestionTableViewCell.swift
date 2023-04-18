@@ -11,6 +11,7 @@ class QuestionTableViewCell: UITableViewCell {
 
     @IBOutlet weak var lblQuestions: UILabel!
     @IBOutlet weak var imgSelection: UIImageView!
+    @IBOutlet weak var viewCellBackground: UIView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

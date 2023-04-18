@@ -26,13 +26,13 @@ class BaseViewController: UIViewController {
     }
     
     func showSnackbar(_ message : String) {
-//        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-//
-//        let okAction = UIAlertAction(title: "OK", style: .default) { action in
-//
-//        }
-//        alertController.addAction(okAction)
-//        present(alertController, animated: true, completion: nil)
+        //        let alertController = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        //
+        //        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+        //
+        //        }
+        //        alertController.addAction(okAction)
+        //        present(alertController, animated: true, completion: nil)
     }
     
     func showHud(message : String = "Please wait...")  {

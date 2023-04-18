@@ -9,12 +9,12 @@ import UIKit
 
 class HomeViewModel: BaseViewModel {
     let model : QuestionModel = QuestionModel()
-
+    
     func getQuestionsData() {
         self.isLoading.accept(true)
         
         let ws = QuestionRepository()
-      
+        
         ws.getQuestions { response, error in
             if response != nil {
                 self.model.questionsData.accept(response ?? [Question]())
